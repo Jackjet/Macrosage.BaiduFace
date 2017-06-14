@@ -12,6 +12,10 @@ namespace Macrosage.Face
     {
         private string _appKey;
         private string _appSecret;
+
+        private readonly string _paramGroupId = "group_id";
+        private readonly string _paramUserId = "uid";
+        private readonly string _paramImage = "image";
         public BaiduFace()
         {
             _appKey = ApiConfig.APIKey;
@@ -114,7 +118,7 @@ namespace Macrosage.Face
 
             return TryApiWithAccessToken(url, new Dictionary<string, object>
             {
-                { "image",base64},
+                { _paramImage,base64},
                 { "face_fields",options.ToString()}
             });
         }
@@ -149,8 +153,8 @@ namespace Macrosage.Face
             var url = "/rest/2.0/face/v2/identify";
 
             return TryApiWithAccessToken<FaceGetUserIdentifyResult>(url, new Dictionary<string, object> {
-                { "group_id",groupId },
-                { "image",ToBase64(image) }
+                { _paramGroupId,groupId },
+                { _paramImage,ToBase64(image) }
             });
         }
         #endregion
@@ -162,9 +166,9 @@ namespace Macrosage.Face
 
             return TryApiWithAccessToken<FaceVerifyResult>(url, new Dictionary<string, object>
             {
-                { "uid",userId },
-                { "image",ToBase64(image) },
-                { "group_id",string.Join(",",groupIds) }
+                { _paramUserId,userId },
+                { _paramImage,ToBase64(image) },
+                { _paramGroupId,string.Join(",",groupIds) }
             });
         }
         #endregion
@@ -235,8 +239,8 @@ namespace Macrosage.Face
 
             FaceResult result = TryApiWithAccessToken<FaceResult>(url, new Dictionary<string, object>
             {
-                { "uid",userId},
-                { "group_id",groupId}
+                { _paramUserId,userId},
+                { _paramGroupId,groupId}
             });
 
             return result;
@@ -250,8 +254,8 @@ namespace Macrosage.Face
 
             return TryApiWithAccessToken<FaceGetResult>(url, new Dictionary<string, object>
             {
-                {"uid",userId },
-                { "group_id",groupId }
+                {_paramUserId,userId },
+                { _paramGroupId,groupId }
             });
         }
         #endregion
@@ -281,7 +285,7 @@ namespace Macrosage.Face
             var url = "/rest/2.0/face/v2/faceset/group/getusers";
 
             return TryApiWithAccessToken<FaceGetGroupUsersResult>(url, new Dictionary<string, object> {
-                { "group_id",groupId},
+                { _paramGroupId,groupId},
                 { "start",start},
                 { "num",num}
             });
@@ -294,8 +298,8 @@ namespace Macrosage.Face
             var url = "/rest/2.0/face/v2/faceset/group/deleteuser";
 
             return TryApiWithAccessToken<FaceResult>(url, new Dictionary<string, object> {
-                { "group_id",groupId},
-                { "uid",userId}
+                { _paramGroupId,groupId},
+                { _paramUserId,userId}
             });
         }
         #endregion
@@ -307,8 +311,8 @@ namespace Macrosage.Face
 
             return TryApiWithAccessToken<FaceResult>(url, new Dictionary<string, object>
             {
-                { "group_id",string.Join(",",groupIds)},
-                { "uid",userId},
+                { _paramGroupId,string.Join(",",groupIds)},
+                { _paramUserId,userId},
                 { "src_group_id",fromGroupId}
             });
         }
