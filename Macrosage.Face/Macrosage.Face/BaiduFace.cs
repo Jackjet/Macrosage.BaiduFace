@@ -25,6 +25,12 @@ namespace Macrosage.Face
         }
 
         #region 根据Token请求api
+        /// <summary>
+        /// 将带Token的请求封装， url?access_token=token
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="tokenFunc"></param>
+        /// <returns></returns>
         private string TryApiWithAccessToken(string url,Func<string, string> tokenFunc)
         {
             var tokenModel = GetAccessToken();
@@ -113,7 +119,6 @@ namespace Macrosage.Face
             });
         }
         #endregion
-
 
         #region 人脸比对
         /// <summary>

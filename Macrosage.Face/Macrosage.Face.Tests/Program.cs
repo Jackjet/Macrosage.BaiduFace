@@ -60,7 +60,7 @@ namespace Macrosage.Face.Tests
             //var result = client.FaceIdentify("macrosage1", fileAdd);
 
             //人脸验证
-            var result = client.FaceVerify("131276", fileAdd, "macrosage1", "macrosage2");
+            //var result = client.FaceVerify("131276", fileAdd, "macrosage1", "macrosage2");
             Console.Read();
         }
     }
