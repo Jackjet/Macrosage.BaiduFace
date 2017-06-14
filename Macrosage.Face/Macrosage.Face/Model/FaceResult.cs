@@ -77,4 +77,26 @@ namespace Macrosage.Face
     {
         public List<SingleUserScoreInfo> result { get; set; }
     }
+
+    public class FaceLocation {
+        public int left { get; set; }
+        public int top { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
+    public class FaceSingleCheckResult
+    {
+        public FaceLocation location { get; set; }
+        public double face_probability { get; set; }
+        public double age { get; set; }
+        public double beauty { get; set; }
+        public uint expression { get; set; }
+        public double expression_probablity { get; set; }
+        public string gender { get; set; }
+        public double gender_probability { get; set; }
+    }
+    public class FaceCheckResult : FaceReturnResult
+    {
+        public List<FaceSingleCheckResult> result { get; set; }
+    }
 }

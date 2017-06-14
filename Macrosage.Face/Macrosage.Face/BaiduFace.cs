@@ -112,7 +112,7 @@ namespace Macrosage.Face
         #endregion
 
         #region 人脸信息检测
-        public string FaceCheck(string imagePath, FaceOptions options = null)
+        public FaceCheckResult FaceCheck(string imagePath, FaceOptions options = null)
         {
             if (options == null) { options = new FaceOptions(); }
 
@@ -120,7 +120,7 @@ namespace Macrosage.Face
 
             string base64 = ToBase64(imagePath);
 
-            return TryApiWithAccessToken(url, new Dictionary<string, object>
+            return TryApiWithAccessToken<FaceCheckResult>(url, new Dictionary<string, object>
             {
                 { _paramImage,base64},
                 { "face_fields",options.ToString()}
