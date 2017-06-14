@@ -19,7 +19,6 @@ namespace Macrosage.Face.Tests
 
             var fileAdd = AppDomain.CurrentDomain.BaseDirectory + "yujingying1.png";
 
-
             //检测人脸
             //{"result_num":1,"result":[{"location":{"left":33,"top":45,"width":39,"height":30},"face_probability":0.95188879966736,"rotation_angle":-2,"yaw":-12.481206893921,"pitch":-1.5474016666412,"roll":-3.5593690872192}],"log_id":573119120}
             //var token = client.FaceCheck(file);

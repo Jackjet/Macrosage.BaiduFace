@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Macrosage.Face
 {
+    /*
+     * 百度人脸识别api接口请求
+     * 文档地址：http://ai.baidu.com/docs#/Face-API/top
+     */
     public class BaiduFace
     {
         private string _appKey;
